@@ -1,0 +1,51 @@
+body{
+	font-family:Microsoft JhengHei;
+}
+
+#crumbs ul {
+	display: inline-block;
+}
+
+#crumbs ul li a {
+	display: block;
+	float: left;
+	height: 40px;
+	background: grey;
+	text-align: center;
+	padding: 0px 40px 0 70px;
+	position: relative;
+	margin: 0 10px 0 0; 
+
+	font-size: 20px;
+	text-decoration: none;
+	color: #fff;
+	line-height: 40px;
+}
+
+#crumbs ul li a:after {
+	content: "";  
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 40px solid grey;
+	position: absolute; 
+	right: -40px; 
+	top: 0;
+	z-index: 1;
+}
+
+#crumbs ul li a:before {
+	content: "";  
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;
+	border-left: 40px solid #212121;
+	position: absolute; 
+	left: 0; 
+	top: 0;
+}
+
+#crumbs ul li .active {
+	background: #0066FF;
+}
+#crumbs ul li .active:after {
+	border-left-color: #0066FF;
+}

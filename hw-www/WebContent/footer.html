@@ -1,0 +1,56 @@
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v2.8";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Load Google SDK for JavaScript -->
+<script src="https://apis.google.com/js/platform.js" async defer>
+  {lang: 'zh-TW'}
+</script>
+
+<link href="./css/footer.css" rel="stylesheet"/>
+
+<footer id= "footer" class="page-footer grey darken-3">
+	<div class="container ">
+		<div class="row">
+			<div class="col l6 s12">
+				<h5 class="white-text">屍速客運</h5>
+				<p class="white-text">全球資訊網程式設計 &nbsp&nbsp&nbsp指導老師：林哲正 老師</p>
+				<p class="white-text">410275007 賴彥丞</p>
+				<p class="white-text">410275015 汪瑞勛</p>
+				<p class="white-text">410275024 陳品豪</p>
+			</div>
+			<div class="col l4 offset-l2 s12">
+				<h5 class="white-text">關於我們</h5>
+				<ul>
+					<li><a class="white-text"><i class="material-icons perfix">phone</i> 客服專線：0800-000-000</a></li>
+					<li><a class="white-text"><i class="material-icons perfix">email</i> 客服意見箱：gg@ininder.com</a></li>
+					<li><a class="white-text" href="https://ticket.gamahao.com/feedback/"><i class="material-icons perfix">comment</i> 我要客訴 *@#~!$</a></li>
+					<li style="margin-top:5px;">
+                        <a href="https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Fticket.gamahao.com%2F&display=popup&ref=plugin&src=share_button" 
+                          target="popup" 
+                          onclick="window.open('https://www.facebook.com/sharer/sharer.php?sdk=joey&u=https%3A%2F%2Fticket.gamahao.com%2F&display=popup&ref=plugin&src=share_button','popup','width=850,height=600'); return false;">
+                            <img id="fb_icon" src="./images/fb_icon.png" ></img>
+                        </a>
+                        
+                        <a class="white-text"> 分享至 Facebook</a>
+                    </li>
+					<li><div class="g-plus" data-action="share" data-annotation="none" data-href="https://ticket.gamahao.com/"></div>
+					<a class="white-text"> 分享至 Google+</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-copyright grey darken-4">
+		<div class="container white-text">
+		Copyright © 2016 屍速客運 Inc. All right reserved
+		</div>
+	</div>
+</footer>
+
