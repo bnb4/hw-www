@@ -2,39 +2,41 @@ package com.gamahao;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ServiceServlet
- */
-@WebServlet("/ServiceServlet")
 public class ServiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-    /**
-     * Default constructor. 
-     */
     public ServiceServlet() {
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		this.doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String page = request.getParameter("page");
+		if (page == null) page = "index";
+		
+		switch (page) {
+		case "index":
+			request.getRequestDispatcher(request.getContextPath()+"/index.jsp").forward(request, response);
+			break;
+		case "agreement":
+			request.getRequestDispatcher(request.getContextPath()+"/agreement/agreement.jsp").forward(request, response);
+			break;
+		case "form":
+			request.getRequestDispatcher(request.getContextPath()+"/form/form.jsp").forward(request, response);
+			break;
+		case "reservation":
+			response.getWriter().append("TEST");
+			break;
+		default:
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			break;
+		}
 	}
 
 }

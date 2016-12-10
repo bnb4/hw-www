@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+	
+}
+
+main {
+    flex: 1 0 auto;
+	height: 700px;
+}
+
+#submit_btn {
+    left: 50%;
+	margin-left: -59px;
+}
+
+#form_main {
+	
+	position: absolute;
+    left: 50%;
+	top: 65px;
+	margin-left: -35%;
+	margin-top: 90px;
+	width: 70%;
+}
+
+@media screen and (min-width: 800) and (max-width: 1400px) {
+    #form_main {
+		width: 75%;
+		margin-left: -37%;
+		margin-top: 90px;
+    }
+    
+    main {
+	   height: 700px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 800px) {
+    #form_main {
+		width: 80%;
+		margin-left: -40%;
+		margin-top: 90px;
+    }
+    
+    main {
+	   height: 750px;
+    }
+}
+
+@media screen and (min-width: 376px) and (max-width: 480px) {
+    #form_main {
+        width: 90%;
+		margin-left: -45%;
+		margin-top: 90px;
+    }
+    
+    main {
+	   height: 770px;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    #form_main {
+        width: 100%;
+		margin-left: -50%;
+		margin-top: 180px;
+    }
+    
+    main {
+	   height: 900px;
+    }
+}
