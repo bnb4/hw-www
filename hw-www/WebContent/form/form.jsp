@@ -83,8 +83,8 @@
 
 	//條款同意確認
 	if ((request.getParameter("user_id") == null) &&
-		(null == (temp = request.getParameter("agreement"))) ||
-		(!temp.equals("agree"))) {
+		((null == (temp = request.getParameter("agreement"))) ||
+		(!temp.equals("agree")))) {
 			response.setHeader("refresh", "0;url=/");
 			showForm = false;
 		}
