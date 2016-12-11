@@ -33,6 +33,9 @@ public class ServiceServlet extends HttpServlet {
 		case "reservation":
 			response.getWriter().append("TEST");
 			break;
+		case "feedback":
+			request.getRequestDispatcher(request.getContextPath()+"/feedback/feedback.jsp").forward(request, response);
+			break;
 		default:
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 			break;

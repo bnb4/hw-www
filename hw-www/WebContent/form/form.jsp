@@ -15,7 +15,7 @@
 	}
 
 	public String jspToast(String msg) {
-		return "<script type=\"text/javascript\">Materialize.toast('$msg', 3000, 'rounded');</script>";
+		return "<script type=\"text/javascript\">Materialize.toast(" + msg + ", 3000, 'rounded');</script>";
 	}
 	
 	private boolean checkReCaptcha(String reponse, String remoteip) {
@@ -167,9 +167,9 @@
 
 <jsp:include page="//footer.html" />
 	
-<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=<?php echo $lang; ?>" async defer></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=<%= lang %>" async defer></script>
 
-<% } %>>
+<% } %>
 
 </body>
 </html>
