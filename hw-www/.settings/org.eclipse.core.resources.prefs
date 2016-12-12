@@ -5,5 +5,6 @@ encoding//WebContent/footer.html=UTF-8
 encoding//WebContent/form/form.jsp=UTF-8
 encoding//WebContent/form/index.jsp=UTF-8
 encoding//WebContent/index.jsp=UTF-8
+encoding//WebContent/reservation/get_available_seats.jsp=UTF-8
 encoding/<project>=UTF-8
 separateDerivedEncodings=true
