@@ -1,4 +1,5 @@
-<%@ page contentType="text/html; charset=utf-8"%>
+<%@ page contentType="text/html; charset=utf-8" %>
+<%@page import="ticket.HeaderCreater" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,8 +24,7 @@
 </head>
 <body>
 
-<!-- jsp:include page="../header.jsp" /-->
-<!-- createHeader('agreement'); -->
+<%=HeaderCreater.createHeader("agreement") %>
 
 <main class="animated fadeIn">
 	<div id="main" class="card-panel hoverable">

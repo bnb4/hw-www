@@ -3,6 +3,7 @@
 <%@ page import="java.net.*" %>
 <%@ page import="java.io.*" %>
 <%@ page import="org.json.JSONObject" %>
+<%@page import="ticket.HeaderCreater" %>
 
 <%!
 	String siteKey = "6LdshwoUAAAAAPx-AuciNpxXAC8kfFL7V7MMU7-N";
@@ -110,7 +111,7 @@
 	if(showForm) { 
 %>
 
-<!-- jsp:include page="//header.jsp" / -->
+<%=HeaderCreater.createHeader("form") %>
 
 <main class="animated fadeIn">
 	<div id="form_main" class="card-panel hoverable">

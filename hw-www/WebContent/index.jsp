@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@page import="ticket.HeaderCreater" %>
 
 <!DOCTYPE html>
 <html>
@@ -23,10 +24,8 @@
 
 	<body>
 		<!-- 上方標題-->
-		<!-- jsp:include page="header.jsp"-->
-			<!--jsp:param name="title" value="👍 事故發生率，業界最高 👍" /-->
-		<!-- /jsp:include-->
-		
+<%=HeaderCreater.createHeader("👍 事故發生率，業界最高 👍") %>
+
 		<!-- 主內容 -->
 
 		<main class="animated fadeIn">
