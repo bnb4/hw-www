@@ -3,7 +3,7 @@
 <%@ page import="java.net.*" %>
 <%@ page import="java.io.*" %>
 <%@ page import="org.json.JSONObject" %>
-<%@page import="ticket.HeaderCreater" %>
+<%@ page import="ticket.HeaderCreater" %>
 
 <%!
 	String siteKey = "6LdshwoUAAAAAPx-AuciNpxXAC8kfFL7V7MMU7-N";
@@ -166,7 +166,7 @@
 	</div>
 </main>	
 
-<jsp:include page="//footer.html" />
+<jsp:include page="/footer.html" />
 	
 <script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit&hl=<%= lang %>" async defer></script>
 

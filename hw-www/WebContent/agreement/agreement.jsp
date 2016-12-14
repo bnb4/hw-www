@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8" %>
-<%@page import="ticket.HeaderCreater" %>
+<%@ page import="ticket.HeaderCreater" %>
 
 <!DOCTYPE html>
 <html>
