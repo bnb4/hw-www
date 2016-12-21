@@ -1,5 +1,5 @@
-<%@page contentType="text/html; charset=UTF-8"%>
-<%@page import="com.google.gson.*"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ page import="com.google.gson.*"%>
 <%@ page import="ticket.SeatsGetter" %>
 <%
 
