@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import ticket.GetAvailableSeats;
+
 public class ServiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -18,8 +20,16 @@ public class ServiceServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String page = request.getParameter("page");
-		if (page == null) page = "index";
+		String service = request.getParameter("service");
 		
+		if (page == null && service == null) page = "index";
+
+		if (page != null) pageForward(page, request, response);
+		else serviceForward(service, request, response);
+		
+	}
+	
+	private void pageForward(String page, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
 		switch (page) {
 		case "index":
 			request.getRequestDispatcher(request.getContextPath()+"/index.jsp").forward(request, response);
@@ -42,4 +52,15 @@ public class ServiceServlet extends HttpServlet {
 		}
 	}
 
+	private void serviceForward(String service, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
+		switch (service) {
+		case "getAvailableSeats":
+			response.getWriter().print(GetAvailableSeats.getSeats(request.getParameter("car_name"), request.getParameter("date"), request.getParameter("begin"), request.getParameter("end")));
+			break;
+		default:
+			response.sendError(HttpServletResponse.SC_NOT_FOUND);
+			break;
+		}
+	}
+	
 }
