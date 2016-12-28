@@ -30,37 +30,29 @@ public class ServiceServlet extends HttpServlet {
 	}
 	
 	private void pageForward(String page, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		switch (page) {
-		case "index":
+		
+		if (page.equals("index"))
 			request.getRequestDispatcher(request.getContextPath()+"/index.jsp").forward(request, response);
-			break;
-		case "agreement":
+		else if (page.equals("agreement"))
 			request.getRequestDispatcher(request.getContextPath()+"/agreement/agreement.jsp").forward(request, response);
-			break;
-		case "form":
+		else if (page.equals("form"))
 			request.getRequestDispatcher(request.getContextPath()+"/form/form.jsp").forward(request, response);
-			break;
-		case "reservation":
-			response.getWriter().append("TEST");
-			break;
-		case "feedback":
+		else if (page.equals("reservation"))
+			request.getRequestDispatcher(request.getContextPath()+"/reservation/reservation.jsp").forward(request, response);
+		else if (page.equals("feedback"))
 			request.getRequestDispatcher(request.getContextPath()+"/feedback/feedback.jsp").forward(request, response);
-			break;
-		default:
+		else
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-			break;
-		}
+		
 	}
 
 	private void serviceForward(String service, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException  {
-		switch (service) {
-		case "getAvailableSeats":
+		
+		if (service.equals("getAvailableSeats"))
 			response.getWriter().print(GetAvailableSeats.getSeats(request.getParameter("car_name"), request.getParameter("date"), request.getParameter("begin"), request.getParameter("end")));
-			break;
-		default:
+		else
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
-			break;
-		}
+		
 	}
 	
 }
