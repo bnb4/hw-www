@@ -1,0 +1,14 @@
+自行部屬需要注意本系統需要映射在跟目錄上
+O] localhost:8080/
+X] localhost:8080/hw-www/
+
+需要修改 Tomcat 中 server.xml
+找到該部屬app項目下
+<Context docBase="hw-www" path="/" reloadable="true" source....
+
+path="/hw-www" 需要修改為 path="/"
+
+此時重開 Tomcat 後進如網址 localhost:8080/ 就可以正常看到本網站
+
+若無法成功請參觀線上 Demo
+http://ticket.jsp.gamahao.com
