@@ -1,5 +1,10 @@
 package ticket;
 
-public class GetStation {
+import com.google.gson.Gson;
 
+public class GetStation {
+	public static String getStation(String route) {
+		return "getStation";
+	
+	}
 }
