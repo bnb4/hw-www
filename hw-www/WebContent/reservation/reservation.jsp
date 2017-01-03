@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=utf-8" %>
 <%@ page import="ticket.HeaderCreater" %>
-
+<%@ page import="database.DatabaseHelper" %>
+<%@ page import="java.sql.*" %>
 
 <!DOCTYPE html>
 <html>
@@ -48,7 +49,21 @@
 									<div class="input-field col s6 tooltipped"  data-position="bottom" data-delay="350" data-tooltip="請選擇您要搭乘的路線">
 										<select name="route" id="route" onchange="getStation()" required class="validate">
 											<option value="" disabled selected>請選擇路線</option>
+											<% 
+												Connection conn = DatabaseHelper.getConnection();
+					
+												PreparedStatement stmt = 
+														conn.prepareStatement("SELECT * FROM `line_name`");
+									        	ResultSet rs = stmt.executeQuery();
+									        	while(rs.next()) {
+									        %>
+									        <option value="<% out.println(rs.getInt("line_id")); %>">
+									        	<% out.println(rs.getString("name")); %>
+									        </option>
+									        <%		
+									        	}
 											
+											%>
 										</select>
 									</div>
 

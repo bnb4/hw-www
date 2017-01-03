@@ -11,7 +11,7 @@ function getCar() { //取車次
 
 	if ($start!=null && $destination!=null  && $date!='') {
 		$.ajax({
-			url:"get_car.php", 
+			url:"http://ticket.jsp.gamahao.com/?service=getCar", 
 			type:'GET',
 			data: {route: $route, start: $start, destination: $destination, date: $date},
 			dataType: 'json',
@@ -28,7 +28,7 @@ function getCar() { //取車次
 						$available_seats = 0;
 
 						$.ajax({
-							url:"get_available_seats.php", 
+							url:"http://ticket.jsp.gamahao.com/?service=getAvailableSeats", 
 							async: false,
 							type:'GET',
 							data: {car_name: car_time[i].car_name, begin: $start, end: $destination, date: $date},
@@ -74,9 +74,9 @@ function getStation() { //取起點
 
 	if ($route!='') {
 		$.ajax({
-			url:"get_station.php", 
+			url:"http://ticket.jsp.gamahao.com/?service=getStation", 
 			type:'GET',
-			data: 'route=' + $route,
+			data: {route: $route},
 			dataType: 'json',
 			success: function(json) {
 				$.each(json, function(i) {
@@ -105,7 +105,7 @@ function getDestination() { //取終點
 	if ($start!='') {
 
 		$.ajax({
-			url:"get_destination.php", 
+			url:"http://ticket.jsp.gamahao.com/?service=getDestination", 
 			type:'GET',
 			data: {route: $route, start: $start},
 			dataType: 'json',
