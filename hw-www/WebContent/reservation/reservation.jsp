@@ -16,8 +16,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-		<link href="css/reservation.css" rel="stylesheet"/>
-		<script type="text/javascript" src="js/reservation.js"></script>
+		<link href="/reservation/css/reservation.css" rel="stylesheet"/>
+		<script type="text/javascript" src="/reservation/js/reservation.js"></script>
 
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
@@ -26,7 +26,7 @@
 	</head>
 	<body>
 	
-	<%=HeaderCreater.createHeader("agreement") %>
+	<%=HeaderCreater.createHeader("reservation") %>
 	
 		<main>
 			<div id="main" class="card-panel hoverable">
@@ -48,7 +48,7 @@
 									<div class="input-field col s6 tooltipped"  data-position="bottom" data-delay="350" data-tooltip="請選擇您要搭乘的路線">
 										<select name="route" id="route" onchange="getStation()" required class="validate">
 											<option value="" disabled selected>請選擇路線</option>
-											?>
+											
 										</select>
 									</div>
 
