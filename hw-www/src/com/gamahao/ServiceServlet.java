@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ticket.GetAvailableSeats;
+import ticket.GetCar;
 import ticket.GetDestination;
+import ticket.GetStation;
 
 public class ServiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
