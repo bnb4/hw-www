@@ -29,8 +29,8 @@ public class StationGetter {
 		try {
 			conn = DatabaseHelper.getConnection();
 
-			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM `line` " + "WHERE `line_id` = " + route
-					+ "AND `id` != (SELECT MAX(`id`) FROM `line`)");
+			PreparedStatement stmt = conn.prepareStatement("SELECT * FROM `line` WHERE `line_id` = ? AND `id` != (SELECT MAX(`id`) FROM `line`)");
+	    	stmt.setString(1, route);
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
