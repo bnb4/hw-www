@@ -22,8 +22,8 @@ public class StationGetter {
 
 	public Station getStation(String route) {
 
-		ArrayList tem_id = new ArrayList();
-		ArrayList tem_name = new ArrayList();
+		ArrayList<String> tem_id = new ArrayList<String>();
+		ArrayList<String> tem_name = new ArrayList<String>();
 
 		Connection conn;
 		try {
@@ -45,10 +45,10 @@ public class StationGetter {
 	}
 
 	class Station {
-		public ArrayList id;
-		public ArrayList name;
+		public ArrayList<String> id;
+		public ArrayList<String> name;
 
-		public Station(ArrayList id, ArrayList name) {
+		public Station(ArrayList<String> id, ArrayList<String> name) {
 			this.id = id;
 			this.name = name;
 		}
