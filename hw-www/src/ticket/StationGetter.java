@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import database.DatabaseHelper;
 
@@ -20,10 +21,9 @@ public class StationGetter {
 		return instance;
 	}
 
-	public Station getStation(String route) {
-
-		ArrayList<String> tem_id = new ArrayList<String>();
-		ArrayList<String> tem_name = new ArrayList<String>();
+	public List<Station> getStation(String route) {
+		
+		List<Station> out = new ArrayList<Station>();
 
 		Connection conn;
 		try {
@@ -34,21 +34,20 @@ public class StationGetter {
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
-				tem_id.add(rs.getString("id"));
-				tem_name.add(rs.getString("name"));
+				out.add(new Station(rs.getString("id"), rs.getString("name")));
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return new Station(tem_id, tem_name);
+		return out;
 	}
 
 	class Station {
-		public ArrayList<String> id;
-		public ArrayList<String> name;
-
-		public Station(ArrayList<String> id, ArrayList<String> name) {
+		public String id;
+		public String name;
+		
+		public Station(String id, String name) {
 			this.id = id;
 			this.name = name;
 		}
