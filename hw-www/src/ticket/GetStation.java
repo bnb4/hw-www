@@ -2,9 +2,13 @@ package ticket;
 
 import com.google.gson.Gson;
 
+
 public class GetStation {
 	public static String getStation(String route) {
-		return "getStation";
-	
+		
+		route = route == null ? "" : route;
+		
+		return new Gson().toJson(StationGetter.getInstance().getStation(route));
+
 	}
 }
