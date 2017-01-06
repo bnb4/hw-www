@@ -22,11 +22,14 @@ public class ServiceServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String page = request.getParameter("page");
 		String service = request.getParameter("service");
 		
 		if (page == null && service == null) page = "index";
 
+		response.setCharacterEncoding("UTF-8");
+		
 		if (page != null) pageForward(page, request, response);
 		else serviceForward(service, request, response);
 		
