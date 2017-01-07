@@ -11,6 +11,7 @@ import ticket.GetAvailableSeats;
 import ticket.GetCar;
 import ticket.GetDestination;
 import ticket.GetStation;
+import ticket.GetTicket;
 
 public class ServiceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
