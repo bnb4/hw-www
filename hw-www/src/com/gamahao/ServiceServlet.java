@@ -52,6 +52,8 @@ public class ServiceServlet extends HttpServlet {
 		else if (page.equals("thanks"))
 			request.getRequestDispatcher(request.getContextPath()+"/feedback/thanks.jsp").forward(request, response);
 		else if (page.equals("inquiry"))
+			request.getRequestDispatcher(request.getContextPath()+"/inquiry/index.jsp").forward(request, response);
+		else if (page.equals("inquiry_result"))
 			request.getRequestDispatcher(request.getContextPath()+"/inquiry/inquire.jsp").forward(request, response);
 		else
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);

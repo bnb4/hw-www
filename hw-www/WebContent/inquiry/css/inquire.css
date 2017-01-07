@@ -1,0 +1,152 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+	
+}
+
+main {
+    flex: 1 0 auto;
+	height: 630px;
+}
+
+#main {
+	
+	position: absolute;
+    left: 50%;
+	margin-left: -35%;
+	margin-top: 110px;
+	width: 70%;
+}
+
+
+#complete{
+	padding-top: 50px;
+	max-height: 400px;
+	max-width: 400px;
+	width:100%;
+	height:auto;
+}
+
+#card_inside {
+	margin-top: 25px;
+	width: 75%;
+}
+#details {
+    
+    padding: 25px 25px 25px 25px;
+}
+
+
+#date{
+	font-size:14px;
+}
+
+#car_name{
+	font-size:18px;
+	font-weight:bold;
+}
+
+#schedule{
+	font-size:20px;
+	font-weight:bold;
+}
+
+#seat{
+	font-size:18px;
+	font-weight:bold;
+}
+
+#price{
+	font-size:16px;
+	font-weight:bold;
+}
+
+#phone{
+	font-size:14px;
+	font-style:italic;
+}
+
+#user_id{
+	font-size:14px;
+	font-style:italic;
+}
+
+#email{
+	font-size:14px;
+	font-style:italic;
+}
+
+#station {
+	padding-top:60px;
+}
+
+#self_data{
+	padding-top:30px;
+}
+
+@media screen and (min-width: 800) and (max-width: 1400px) {
+    #main {
+		width: 75%;
+		margin-left: -37%;
+		margin-top: 80px;
+    }
+    
+    #card_inside {
+	   width: 70%;
+    }
+    
+    main {
+	   height: 630px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 800px) {
+    #main {
+		width: 80%;
+		margin-left: -40%;
+		margin-top: 100px;
+
+    }
+    
+    #card_inside {
+	   width: 90%;
+    }
+    
+    main {
+	   height: 680px;
+    }
+}
+
+@media screen and (min-width: 376px) and (max-width: 480px) {
+    #main {
+        width: 90%;
+		margin-left: -45%;
+		margin-top: 90px;
+
+    }
+    
+    #card_inside {
+	   width: 100%;
+    }
+    
+    main {
+	   height: 650px;
+    }
+}
+
+@media screen and (max-width: 376px) {
+    #main {
+        width: 100%;
+		margin-left: -50%;
+		margin-top: 90px;
+    }
+    
+    #card_inside {
+	   width: 100%;
+    }
+    
+    main {
+	   height: 620px;
+    }
+}
