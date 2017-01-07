@@ -55,6 +55,10 @@ public class ServiceServlet extends HttpServlet {
 			request.getRequestDispatcher(request.getContextPath()+"/inquiry/index.jsp").forward(request, response);
 		else if (page.equals("inquiry_result"))
 			request.getRequestDispatcher(request.getContextPath()+"/inquiry/inquire.jsp").forward(request, response);
+		else if (page.equals("complete"))
+			request.getRequestDispatcher(request.getContextPath()+"/result/complete.jsp").forward(request, response);
+		else if (page.equals("fail"))
+			request.getRequestDispatcher(request.getContextPath()+"/result/fail.jsp").forward(request, response);
 		else
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		
@@ -90,13 +94,14 @@ public class ServiceServlet extends HttpServlet {
 							request.getParameter("destination")));
 		else if (service.equals("getTicket"))
 			if (GetTicket.getTicket(
+					request.getSession(),
 					request.getParameter("start"),
 					request.getParameter("end"),
 					request.getParameter("date"),
 					request.getParameter("car_name"))) 
-				request.getRequestDispatcher(request.getContextPath()+"/result/complete.jsp").forward(request, response);
+				response.sendRedirect("/?page=complete");
 			else
-				request.getRequestDispatcher(request.getContextPath()+"/result/fail.jsp").forward(request, response);
+				response.sendRedirect("/?page=fail");
 		else
 			response.sendError(HttpServletResponse.SC_NOT_FOUND);
 		
