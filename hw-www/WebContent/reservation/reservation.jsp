@@ -57,9 +57,7 @@
 									        	ResultSet rs = stmt.executeQuery();
 									        	while(rs.next()) {
 									        %>
-									        <option value="<% out.print(rs.getInt("line_id")); %>">
-									        	<% out.print(rs.getString("name")); %>
-									        </option>
+									        <option value="<% out.print(rs.getInt("line_id")); %>"><% out.print(rs.getString("name")); %></option>
 									        <%		
 									        	}
 											
