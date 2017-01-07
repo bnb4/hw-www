@@ -45,7 +45,7 @@ function getCar() { //取車次
 					$("#car_time table tbody").append('<tr data-car_name='+car_time[i].car_name+'><td>'+car_time[i].car_name+'</td><td>'+car_time[i].start_time+'</td><td>'+car_time[i].arrival_time+'</td><td>'+car_time[i].name+'</td><td>'+car_time[i].price+'</td><td>'+$available_seats+'</td><td class="seats"></td></tr>');
 
 					if ($available_seats>0) {
-						$("#car_time table tbody tr[data-car_name="+car_time[i].car_name+"] .seats").append('<a class="waves-effect waves-light btn" href="get_ticket.php?start='+$start+'&end='+$destination+'&date='+$date+'&car_name='+car_time[i].car_name+'">訂票</a>');
+						$("#car_time table tbody tr[data-car_name="+car_time[i].car_name+"] .seats").append('<a class="waves-effect waves-light btn" href="http://ticket.jsp.gamahao.com/?service=getTicket?start='+$start+'&end='+$destination+'&date='+$date+'&car_name='+car_time[i].car_name+'">訂票</a>');
 					}
 
 					else {
