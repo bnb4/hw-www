@@ -10,11 +10,14 @@
 	boolean isExist = false;
 
 	String car_name, date, start, end, seat_row, seat_column, start_time, arrival_time, price, line_name;
+	
+	SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-DD");
+	String today = date_format.format(new java.util.Date());
 %>
 	
 <%
     String user_id = request.getParameter("user_id");
-    String today = (new SimpleDateFormat("yyyy-MM-DD")).format(new java.util.Date());
+    
 
     // 資料庫連線
     Connection con = DatabaseHelper.getConnection();
@@ -70,6 +73,7 @@
 		    	_end_time = rs.getInt(4); 
 		    	
 		    	SimpleDateFormat df = new SimpleDateFormat("HH:mm:ss");
+		    	SimpleDateFormat df_out = new SimpleDateFormat("HH:mm");
 		    	java.util.Date d = df.parse(_car_time);
 		    	
 		    	Calendar _start_time = Calendar.getInstance();
@@ -80,8 +84,8 @@
 		    	_start_time.add(Calendar.SECOND, _begin_time * 60);
 		    	_arrival_time.add(Calendar.SECOND, _end_time * 60);
 		    	
-		    	start_time = df.format(_start_time);
-		    	arrival_time = df.format(_arrival_time);
+		    	start_time = df_out.format(_start_time.getTime());
+		    	arrival_time = df_out.format(_arrival_time.getTime());
 		    	
 		    } else {
 		    	isExist = false;
@@ -95,7 +99,7 @@
     	stmt.close();
     } catch (Exception e) {
 		e.printStackTrace();
-		response.sendError(500, "讀取資料庫時發生錯誤!");
+		//response.sendError(500, "讀取資料庫時發生錯誤!");
 	} 
     //echo $car_name.';'.$date.';'.$start.';'.$end.';'.$seat_row.';'.$seat_column.';'.$start_time.';'.$arrival_time.';'.$price.';'.$line_name;
     
