@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ page import="ticket.HeaderCreater" %>
+
 <%!
 	String siteKey = "6LdshwoUAAAAAPx-AuciNpxXAC8kfFL7V7MMU7-N";
 	String secret = "6LdshwoUAAAAADCxsmJ9a2OgG4sHJGB_GPlNEwsc";
@@ -52,10 +54,10 @@
 
 </head>
 <body>
-
-<!-- jsp:include page="../header.jsp" /-->
-<!-- createHeader('今天你敢客訴，小心身首異處。'); -->
-
+	<!-- 上方標題-->
+	<%=HeaderCreater.createHeader("今天你敢客訴，小心身首異處") %>
+	
+<!-- 主內容 -->
 <main class="animated fadeIn">
 	<div id="form_main" class="card-panel hoverable">
 	

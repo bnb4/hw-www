@@ -63,9 +63,9 @@ else{
 
 	<body>
 		<!-- 上方標題-->
-		<%=HeaderCreater.createHeader("先動動你的大腦再來查啦") %>
+		<%=HeaderCreater.createHeader("你已經死了") %>
+		
 		<!-- 主內容 -->
-
 		<main>
 			<div id="main" class="card-panel hoverable">
 				<div class="col s12 m7">
