@@ -18,7 +18,6 @@ public class GetTicket {
 
 	public static boolean getTicket(HttpSession session, String start, String end, String date, String car_name) {
 		
-		
 		int _end = end == null ? 0 : Integer.parseInt(end);
 		int _start = start == null ? 0 : Integer.parseInt(start);
 		date = date == null ? "" : date;
@@ -94,6 +93,7 @@ public class GetTicket {
 			
 			Seat av_seat = seat.getSeats(car_name, date, _start, _end).availableSeats.get(0);
 			
+			//insert ticket
 			PreparedStatement stmt_ticket = conn.prepareStatement("INSERT INTO `ticket`(`id`, `user_id`, `email`, `phone`, `ticket_time`, `car_date`, `car_name`, `begin`, `end`, `seat_row`, `seat_column`, `price`) VALUES "
 					+ "(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 			stmt_ticket.setString(1, (String)session.getAttribute("user_id"));
@@ -106,6 +106,29 @@ public class GetTicket {
 			stmt_ticket.setInt(8, _end);
 			stmt_ticket.setInt(9, av_seat.row);
 			stmt_ticket.setInt(10, av_seat.column);
+			stmt_ticket.setInt(11, price);
+			
+			stmt_ticket.executeQuery();
+			
+			//insert log
+			PreparedStatement stmt_log = conn.prepareStatement("INSERT INTO `log`(`id`, `time`, `type`, `content`) VALUES "
+					+ "(NULL, ?, ?, ?)");
+			stmt_log.setString(1, current_time);
+			stmt_log.setString(2, "reservation");
+			stmt_log.setString(3, (String)session.getAttribute("user_id")+"的定票");
+			
+			stmt_log.executeQuery();
+			
+
+			session.setAttribute("car_name", car_name);
+			session.setAttribute("date", date);
+			session.setAttribute("start", rs_start.getString("name"));
+			session.setAttribute("end", rs_end.getString("name"));
+			session.setAttribute("seat_row", av_seat.row);
+			session.setAttribute("seat_column", av_seat.column);
+			session.setAttribute("start_time", time_start);
+			session.setAttribute("arrival_time", time_end);
+			session.setAttribute("price", price);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
