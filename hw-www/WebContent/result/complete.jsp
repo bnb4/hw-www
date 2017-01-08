@@ -7,6 +7,13 @@
 	}
 ? -->
 
+<%
+	/*if(session.getAttribute("date")==null){
+		response.sendRedirect("/index.jsp");
+	}*/
+		
+%>
+
 <!DOCTYPE html>
 <html>
 	<head>
@@ -43,23 +50,20 @@
 						<div class="card-stacked">
 							<div id="card_inside" class="row">
 								<div id="details" class="card hoverable">
-									<p><span id="date" class="left"><?php echo $_SESSION['date']?></span>
-										<span id="car_name" class="right">車次<?php echo $_SESSION['car_name']?></span></p>
-									<p id="station" class="center"><span id="schedule" ><?php echo $_SESSION['start'].' '.$_SESSION['start_time'];?> ->
-                                        <?php echo $_SESSION['end'].' '.$_SESSION['arrival_time']?></span></p>
-										
-									<p class="center"><span id="seat" class="left">座位：<?php echo $_SESSION['seat_column'].'排'.$_SESSION['seat_row'].'列'?></span>
-										<span id="price" class="right">NT$ <?php echo $_SESSION['price']?></span></p>
-										
-									<p id="self_data" class="center"><span id="user_id" class="left">身分證：<?php echo $_SESSION['user_id']?></span>
-										<span id="phone" class="center">電話：<?php echo $_SESSION['phone']?></span>
-										<span id="email" class="right">Email：<?php echo $_SESSION['email']?></span></p>
+									<p><span id="date" class="left"><% out.print(session.getAttribute("date")); %></span>
+										<span id="car_name" class="right">車次<% out.print(session.getAttribute("car_name")); %></span></p>
+									<p id="station" class="center"><span id="schedule" ><% out.print(session.getAttribute("start") + " " + session.getAttribute("start_time") + " -> " + session.getAttribute("end") + " " + session.getAttribute("arrival_time")); %></span></p>
+									<p class="center"><span id="seat" class="left">座位：<% out.print(session.getAttribute("seat_column") + "排" + session.getAttribute("seat_row") + "列"); %></span>
+										<span id="price" class="right">NT$ <% out.print(session.getAttribute("price")); %></span></p>
+									<p id="self_data" class="center"><span id="user_id" class="left">身分證：<% out.print(session.getAttribute("user_id")); %></span>
+										<span id="phone" class="center">電話：<% out.print(session.getAttribute("phone")); %></span>
+										<span id="email" class="right">Email：<% out.print(session.getAttribute("email")); %></span></p>
 									<span>* 請在該班車一小時前取票完畢</span>
 								</div>
 							</div>
 							
 							<div class="card-action grey darken-4 center">
-								<a class="white-text" style="font-size:18pt;" href="https://ticket.gamahao.com">點選這裡返回屍速之旅</a>
+								<a class="white-text" style="font-size:18pt;" href="http://ticket.jsp.gamahao.com">點選這裡返回屍速之旅</a>
 							</div>
 						</div>
 					</div>
@@ -71,5 +75,5 @@
 	<jsp:include page="/footer.html" />
 	
 </html>
-
-<?php session_destroy();?>
+<% session.invalidate(); %>
+<!-- ?php session_destroy();? -->

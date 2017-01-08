@@ -63,7 +63,7 @@ else{
 
 	<body>
 		<!-- 上方標題-->
-		<%=HeaderCreater.createHeader("你已經死了") %>
+		<%=HeaderCreater.createHeader("<a>&#9760 &nbsp</a>你已經死了<a>&nbsp &#9760</a>") %>
 		
 		<!-- 主內容 -->
 		<main>

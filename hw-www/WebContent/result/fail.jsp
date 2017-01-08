@@ -68,4 +68,5 @@
 	<jsp:include page="/footer.html" />
 	
 </html>
+<% session.invalidate(); %>
 <!-- ?php session_destroy();? -->
