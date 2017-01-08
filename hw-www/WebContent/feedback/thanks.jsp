@@ -1,22 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="ticket.HeaderCreater" %>
+<%@ page import="database.DatabaseHelper" %>
+<%@ page import="java.sql.*" %>
+
 <!-- ?php 
-
-include '../src/autoload.php';
-$secret = '6LdshwoUAAAAADCxsmJ9a2OgG4sHJGB_GPlNEwsc';
-
-if(isset($_POST['g-recaptcha-response'])){
-
-	$recaptcha = new \ReCaptcha\ReCaptcha($secret);
-
-	// 將 recaptcha->verify 的值給 resp
-	$resp = $recaptcha->verify($_POST['g-recaptcha-response'], $_SERVER['REMOTE_ADDR']);
-
-    // 判斷 resp->isSuccess 是 true 或 false
-    if($resp->isSuccess() != true){
-	   header("Location:/");
-    }
-}
 
 include '../db_connection.php';
 
@@ -40,7 +27,28 @@ else{
 }
 
 ?-->
-
+<%
+	//資料庫連線
+	Connection con = DatabaseHelper.getConnection();
+	
+	//判斷是否填寫過
+	if(request.getParameter("content")==null){
+		response.setHeader("refresh", "0;url=/");
+	}
+	
+	String name, email, phone, content;
+	
+	name = request.getParameter("name");
+	email = request.getParameter("email");
+	phone = request.getParameter("phone");
+	content = request.getParameter("content");
+	
+	String sql = "INSERT INTO suggestion (name,email,phone,content)VALUES("+name+","+email+","+phone+","+content+")";
+	
+	PreparedStatement stmt = con.prepareStatement(sql);
+	stmt.executeUpdate();
+	
+%>
 <!DOCTYPE html>
 <html>
 	<head>
