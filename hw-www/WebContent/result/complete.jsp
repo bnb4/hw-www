@@ -1,17 +1,10 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="ticket.HeaderCreater" %>
 
-<!-- ?php session_start(); 
-	if (!isset($_SESSION['date'])) {
-		header("Location:/");
-	}
-? -->
-
 <%
-	/*if(session.getAttribute("date")==null){
-		response.sendRedirect("/index.jsp");
-	}*/
-		
+	if(session.getAttribute("date")==null){
+		response.setHeader("refresh", "0;url=/");
+	}
 %>
 
 <!DOCTYPE html>
@@ -50,14 +43,14 @@
 						<div class="card-stacked">
 							<div id="card_inside" class="row">
 								<div id="details" class="card hoverable">
-									<p><span id="date" class="left"><% out.print(session.getAttribute("date")); %></span>
-										<span id="car_name" class="right">車次<% out.print(session.getAttribute("car_name")); %></span></p>
-									<p id="station" class="center"><span id="schedule" ><% out.print(session.getAttribute("start") + " " + session.getAttribute("start_time") + " -> " + session.getAttribute("end") + " " + session.getAttribute("arrival_time")); %></span></p>
-									<p class="center"><span id="seat" class="left">座位：<% out.print(session.getAttribute("seat_column") + "排" + session.getAttribute("seat_row") + "列"); %></span>
-										<span id="price" class="right">NT$ <% out.print(session.getAttribute("price")); %></span></p>
-									<p id="self_data" class="center"><span id="user_id" class="left">身分證：<% out.print(session.getAttribute("user_id")); %></span>
-										<span id="phone" class="center">電話：<% out.print(session.getAttribute("phone")); %></span>
-										<span id="email" class="right">Email：<% out.print(session.getAttribute("email")); %></span></p>
+									<p><span id="date" class="left"><%= session.getAttribute("date") %></span>
+										<span id="car_name" class="right">車次<%= session.getAttribute("car_name") %></span></p>
+									<p id="station" class="center"><span id="schedule" ><%= session.getAttribute("start") + " " + session.getAttribute("start_time") + " -> " + session.getAttribute("end") + " " + session.getAttribute("arrival_time") %></span></p>
+									<p class="center"><span id="seat" class="left">座位：<%= session.getAttribute("seat_column") + "排" + session.getAttribute("seat_row") + "列" %></span>
+										<span id="price" class="right">NT$ <%= session.getAttribute("price") %></span></p>
+									<p id="self_data" class="center"><span id="user_id" class="left">身分證：<%= session.getAttribute("user_id") %></span>
+										<span id="phone" class="center">電話：<%= session.getAttribute("phone") %></span>
+										<span id="email" class="right">Email：<%= session.getAttribute("email") %></span></p>
 									<span>* 請在該班車一小時前取票完畢</span>
 								</div>
 							</div>
@@ -76,4 +69,3 @@
 	
 </html>
 <% session.invalidate(); %>
-<!-- ?php session_destroy();? -->

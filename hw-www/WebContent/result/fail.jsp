@@ -1,10 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="ticket.HeaderCreater" %>
 
-<!-- ?php session_start();
-
-? -->
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -40,17 +36,15 @@
 						<div class="card-stacked">
 							<div class="card-content">
 								<h5><b>訂票失敗
-									<!--?php
-										if($_REQUEST['error']=='duplicate'){
-											echo " - 已訂過該班車";
-										}
-										else if($_REQUEST['error']=='no_seat'){
-											echo " - 沒有座位";
-										}
+									<%
+										if(session.getAttribute("error")=="duplicate")
+											out.print(" - 已訂過該班車");
+										else if(session.getAttribute("error")=="no_seat")
+											out.print(" - 沒有座位");
 										else{
-											header("Location:/");
+											response.setHeader("refresh", "0;url=/");
 										}
-									?-->
+									%>
 								</b></h5>
 
 								<p>真是太失敗了，這點小事也做不好，以後出社會怎麼辦？能不能磨練個百年再來用我們的系統啊？</p>
@@ -69,4 +63,3 @@
 	
 </html>
 <% session.invalidate(); %>
-<!-- ?php session_destroy();? -->
