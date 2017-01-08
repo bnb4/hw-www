@@ -6,7 +6,7 @@ function count() {
 		setTimeout("count()",1000);
 	}
 	else{
-		window.location.href = 'https://ticket.gamahao.com';
+		window.location.href = 'http://ticket.jsp.gamahao.com';
 	}
 	
 }

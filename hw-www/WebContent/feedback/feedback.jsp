@@ -69,7 +69,7 @@
 			</div>
 		</div>
 	
-		<form action="thanks.php" method="post">
+		<form action="/?page=thanks" method="post">
 		
 				<div class="input-field col s6 ">
 					<i class="material-icons prefix">perm_identity</i>

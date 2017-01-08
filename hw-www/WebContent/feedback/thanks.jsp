@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@ page import="ticket.HeaderCreater" %>
 <!-- ?php 
 
 include '../src/autoload.php';
@@ -50,7 +51,7 @@ else{
 		<!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-		<link href="css/thanks.css" rel="stylesheet"/>
+		<link href="/feedback/css/thanks.css" rel="stylesheet"/>
 		<!-- Google reCaptcha API-->
 		<script src='https://www.google.com/recaptcha/api.js'></script>
 		
@@ -62,10 +63,7 @@ else{
 
 	<body>
 		<!-- 上方標題-->
-		
-		<?php include '../header.php';
-		createHeader('<a>&#9760 &nbsp</a>你已經死了<a>&nbsp &#9760</a>');?>
-		
+		<%=HeaderCreater.createHeader("先動動你的大腦再來查啦") %>
 		<!-- 主內容 -->
 
 		<main>
@@ -82,7 +80,7 @@ else{
 								<p class="right">正在倒數 <span id="timing"></span> 秒回主頁面</p>
 							</div>
 							<div class="card-action grey darken-4 center">
-								<a class="white-text" style="font-size:18pt;" href="https://ticket.gamahao.com">點選這裡返回屍速之旅</a>
+								<a class="white-text" style="font-size:18pt;" href="http://ticket.jsp.gamahao.com">點選這裡返回屍速之旅</a>
 							</div>
 						</div>
 					</div>
@@ -92,7 +90,7 @@ else{
 
 	</body>
 	<!--倒數計時-->
-	<script src="timing.js"></script>
-	<?php include '../footer.html'?>
+	<script src="/feedback/timing.js"></script>
+	<jsp:include page="/footer.html" />
 	
 </html>
