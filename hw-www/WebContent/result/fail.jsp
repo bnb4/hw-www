@@ -1,9 +1,9 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="ticket.HeaderCreater" %>
 
-<?php session_start();
+<!-- ?php session_start();
 
-?>
+? -->
 
 <!DOCTYPE html>
 <html>
@@ -35,12 +35,12 @@
 				<div class="col s12 m7">
 					<div class="card">
 						<div class="card-image"  align="center">
-							<img id="fail" src="../images/fail.png">
+							<img id="fail" src="/images/fail.png">
 						</div>
 						<div class="card-stacked">
 							<div class="card-content">
 								<h5><b>訂票失敗
-									<?php
+									<!--?php
 										if($_REQUEST['error']=='duplicate'){
 											echo " - 已訂過該班車";
 										}
@@ -50,13 +50,13 @@
 										else{
 											header("Location:/");
 										}
-									?>
+									?-->
 								</b></h5>
 
 								<p>真是太失敗了，這點小事也做不好，以後出社會怎麼辦？能不能磨練個百年再來用我們的系統啊？</p>
 							</div>
 							<div class="card-action grey darken-4 center">
-								<a class="white-text" style="font-size:18pt;" href="https://ticket.gamahao.com">點選這裡返回屍速之旅</a>
+								<a class="white-text" style="font-size:18pt;" href="http://ticket.jsp.gamahao.com">點選這裡返回屍速之旅</a>
 							</div>
 						</div>
 					</div>
@@ -68,4 +68,4 @@
 	<jsp:include page="/footer.html" />
 	
 </html>
-<?php session_destroy();?>
+<!-- ?php session_destroy();? -->

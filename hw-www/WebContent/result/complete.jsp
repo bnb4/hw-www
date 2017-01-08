@@ -1,11 +1,11 @@
 <%@ page contentType="text/html; charset=utf-8"%>
 <%@ page import="ticket.HeaderCreater" %>
 
-<?php session_start(); 
+<!-- ?php session_start(); 
 	if (!isset($_SESSION['date'])) {
 		header("Location:/");
 	}
-?>
+? -->
 
 <!DOCTYPE html>
 <html>
@@ -38,7 +38,7 @@
 				<div class="col s12 m7">
 					<div class="card grey lighten-2">
 						<div class="card-image"  align="center">
-							<img id="complete" src="../images/complete.png">
+							<img id="complete" src="/images/complete.png">
 						</div>
 						<div class="card-stacked">
 							<div id="card_inside" class="row">

@@ -71,7 +71,7 @@ else{
 				<div class="col s12 m7">
 					<div class="card">
 						<div class="card-image"  align="center">
-							<img id="warning" src="../images/warning.jpg">
+							<img id="warning" src="/images/warning.jpg">
 						</div>
 						<div class="card-stacked">
 							<div class="card-content">
