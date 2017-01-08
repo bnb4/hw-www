@@ -34,6 +34,7 @@ public class GetTicket {
 			stmt_chk.setString(2, date);
 			stmt_chk.setString(3, car_name);
 			ResultSet rs_chk = stmt_chk.executeQuery();
+    		System.out.println(stmt_chk);
 			
 			rs_chk.first();
 			
@@ -43,20 +44,21 @@ public class GetTicket {
 			}
 			
 			//檢查是否有位置
-			SeatsGetter seat = SeatsGetter.getInstance();
-			String status = seat.getSeats(car_name, date, _start, _end).status;
+			SeatsGetter seat_getter = SeatsGetter.getInstance();
+			String status = seat_getter.getSeats(car_name, date, _start, _end).status;
 			if (!status.equals("success")) {
 				session.setAttribute("error", "status");
 				return false;
 			}
 			
 			//班次
-    		PreparedStatement stmt = conn.prepareStatement("SELECT car_name, weight, car_type.name, route, car_time FROM `timetable` "
+    		PreparedStatement stmt = conn.prepareStatement("SELECT car_name, weight, car_type.name, route, car_time FROM `timetable`  "
     				+ "INNER JOIN `car` ON timetable.plate = car.plate "
     				+ "INNER JOIN `car_type` ON car_type.id = car.car_type "
     				+ "WHERE `car_name` = ?");
     		stmt.setString(1, car_name);
 			ResultSet rs = stmt.executeQuery();
+    		System.out.println(stmt);
 			
 			rs.first();
 			
@@ -65,6 +67,7 @@ public class GetTicket {
     		stmt_start.setInt(1, rs.getInt("route"));
     		stmt_start.setInt(2, _start);
 			ResultSet rs_start = stmt_start.executeQuery();
+    		System.out.println(stmt_start);
 			
 			rs_start.first();
 			
@@ -73,6 +76,7 @@ public class GetTicket {
     		stmt_end.setInt(1, rs.getInt("route"));
     		stmt_end.setInt(2, _end);
 			ResultSet rs_end = stmt_end.executeQuery();
+    		System.out.println(stmt_end);
 			
 			rs_end.first();
 			
@@ -91,7 +95,7 @@ public class GetTicket {
 			df.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
 			String current_time = df.format(now);
 			
-			Seat av_seat = seat.getSeats(car_name, date, _start, _end).availableSeats.get(0);
+			Seat av_seat = seat_getter.getSeats(car_name, date, _start, _end).availableSeats.get(0);
 			
 			//insert ticket
 			PreparedStatement stmt_ticket = conn.prepareStatement("INSERT INTO `ticket`(`id`, `user_id`, `email`, `phone`, `ticket_time`, `car_date`, `car_name`, `begin`, `end`, `seat_row`, `seat_column`, `price`) VALUES "
@@ -109,6 +113,7 @@ public class GetTicket {
 			stmt_ticket.setInt(11, price);
 			
 			stmt_ticket.executeQuery();
+    		System.out.println(stmt_ticket);
 			
 			//insert log
 			PreparedStatement stmt_log = conn.prepareStatement("INSERT INTO `log`(`id`, `time`, `type`, `content`) VALUES "
@@ -118,6 +123,7 @@ public class GetTicket {
 			stmt_log.setString(3, (String)session.getAttribute("user_id")+"的定票");
 			
 			stmt_log.executeQuery();
+    		System.out.println(stmt_log);
 			
 
 			session.setAttribute("car_name", car_name);
