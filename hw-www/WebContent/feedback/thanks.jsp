@@ -43,10 +43,26 @@ else{
 	phone = request.getParameter("phone");
 	content = request.getParameter("content");
 	
-	String sql = "INSERT INTO suggestion (name,email,phone,content)VALUES("+name+","+email+","+phone+","+content+")";
+	PreparedStatement stmt = con.prepareStatement("INSERT INTO suggestion (name,email,phone,content)VALUES( ? , ? , ? , ? )");
 	
-	PreparedStatement stmt = con.prepareStatement(sql);
+	stmt.setString(1, name);
+	stmt.setString(2, email);
+	stmt.setString(3, phone);
+	stmt.setString(4, content);
+	
 	stmt.executeUpdate();
+	
+	PreparedStatement stmtLog;
+	
+	if(request.getParameter("name")==""){
+		stmtLog = con.prepareStatement("INSERT INTO log (type,content)VALUES('suggestion','無名氏的客訴已傳送')");
+		stmtLog.executeUpdate();
+	}
+	else{
+		stmtLog = con.prepareStatement("INSERT INTO log (type,content)VALUES('suggestion', ? )");
+		stmtLog.setString(1, name+"的客訴已傳送");
+		stmtLog.executeUpdate();
+	}
 	
 %>
 <!DOCTYPE html>
