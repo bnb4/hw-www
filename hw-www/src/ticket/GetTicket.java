@@ -30,7 +30,7 @@ public class GetTicket {
 			conn = DatabaseHelper.getConnection();
     		PreparedStatement stmt_chk = conn.prepareStatement("SELECT COUNT(*) AS c FROM `ticket` "
     				+ "WHERE `user_id` = ? AND `car_date` = ? AND `car_name` = ?");
-			stmt_chk.setString(1, (String)session.getAttribute("user_id"));
+			stmt_chk.setString(1, session.getAttribute("user_id").toString());
 			stmt_chk.setString(2, date);
 			stmt_chk.setString(3, car_name);
 			ResultSet rs_chk = stmt_chk.executeQuery();
@@ -58,7 +58,7 @@ public class GetTicket {
     				+ "WHERE `car_name` = ?");
     		stmt.setString(1, car_name);
 			ResultSet rs = stmt.executeQuery();
-    		System.out.println(stmt);
+			System.out.println(rs);
 			
 			rs.first();
 			
@@ -67,7 +67,7 @@ public class GetTicket {
     		stmt_start.setInt(1, rs.getInt("route"));
     		stmt_start.setInt(2, _start);
 			ResultSet rs_start = stmt_start.executeQuery();
-    		System.out.println(stmt_start);
+			System.out.println(stmt_start);
 			
 			rs_start.first();
 			
@@ -76,7 +76,7 @@ public class GetTicket {
     		stmt_end.setInt(1, rs.getInt("route"));
     		stmt_end.setInt(2, _end);
 			ResultSet rs_end = stmt_end.executeQuery();
-    		System.out.println(stmt_end);
+			System.out.println(stmt_end);
 			
 			rs_end.first();
 			
@@ -100,9 +100,9 @@ public class GetTicket {
 			//insert ticket
 			PreparedStatement stmt_ticket = conn.prepareStatement("INSERT INTO `ticket`(`id`, `user_id`, `email`, `phone`, `ticket_time`, `car_date`, `car_name`, `begin`, `end`, `seat_row`, `seat_column`, `price`) VALUES "
 					+ "(NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-			stmt_ticket.setString(1, (String)session.getAttribute("user_id"));
-			stmt_ticket.setString(2, (String)session.getAttribute("email"));
-			stmt_ticket.setString(3, (String)session.getAttribute("phone"));
+			stmt_ticket.setString(1, session.getAttribute("user_id").toString());
+			stmt_ticket.setString(2, session.getAttribute("email").toString());
+			stmt_ticket.setString(3, session.getAttribute("phone").toString());
 			stmt_ticket.setString(4, current_time);
 			stmt_ticket.setString(5, date);
 			stmt_ticket.setString(6, car_name);
@@ -112,18 +112,18 @@ public class GetTicket {
 			stmt_ticket.setInt(10, av_seat.column);
 			stmt_ticket.setInt(11, price);
 			
-			stmt_ticket.executeQuery();
-    		System.out.println(stmt_ticket);
+			stmt_ticket.executeUpdate();
+			System.out.println(stmt_ticket);
 			
 			//insert log
 			PreparedStatement stmt_log = conn.prepareStatement("INSERT INTO `log`(`id`, `time`, `type`, `content`) VALUES "
 					+ "(NULL, ?, ?, ?)");
 			stmt_log.setString(1, current_time);
 			stmt_log.setString(2, "reservation");
-			stmt_log.setString(3, (String)session.getAttribute("user_id")+"的定票");
+			stmt_log.setString(3, session.getAttribute("user_id").toString()+"的訂票");
 			
-			stmt_log.executeQuery();
-    		System.out.println(stmt_log);
+			stmt_log.executeUpdate();
+			System.out.println(stmt_log);
 			
 
 			session.setAttribute("car_name", car_name);
