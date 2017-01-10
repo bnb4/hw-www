@@ -8,6 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
 import java.util.Date;
+import java.util.List;
 import java.util.TimeZone;
 
 import javax.servlet.http.HttpSession;
@@ -43,7 +44,7 @@ public class GetTicket {
 				return false;
 			}
 			
-			//檢查是否有位置
+			//檢查是否抓取位置成功
 			SeatsGetter seat_getter = SeatsGetter.getInstance();
 			String status = seat_getter.getSeats(car_name, date, _start, _end).status;
 			if (!status.equals("success")) {
@@ -95,7 +96,15 @@ public class GetTicket {
 			df.setTimeZone(TimeZone.getTimeZone("Asia/Taipei"));
 			String current_time = df.format(now);
 			
-			Seat av_seat = seat_getter.getSeats(car_name, date, _start, _end).availableSeats.get(0);
+			List<ticket.Seat> availableSeats =  seat_getter.getSeats(car_name, date, _start, _end).availableSeats;
+			
+			// 如果沒有位置的話，要回傳失敗
+			if (availableSeats.size() == 0) {
+				session.setAttribute("error", "no_seat");
+				return false;
+			}
+			
+			Seat av_seat = availableSeats.get(0);
 			
 			//insert ticket
 			PreparedStatement stmt_ticket = conn.prepareStatement("INSERT INTO `ticket`(`id`, `user_id`, `email`, `phone`, `ticket_time`, `car_date`, `car_name`, `begin`, `end`, `seat_row`, `seat_column`, `price`) VALUES "
