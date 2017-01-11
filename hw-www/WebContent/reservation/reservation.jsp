@@ -2,6 +2,16 @@
 <%@ page import="ticket.HeaderCreater" %>
 <%@ page import="database.DatabaseHelper" %>
 <%@ page import="java.sql.*" %>
+	
+	<% 
+		boolean showPage = true;
+		if (session.getAttribute("user_id") == null) { 
+			response.setHeader("refresh", "0;url=/?page=index");
+			showPage = false;
+		}
+		
+		if(showPage) { 
+	%>
 
 <!DOCTYPE html>
 <html>
@@ -127,3 +137,4 @@
 		
 	</body>
 </html>
+<% } %>
